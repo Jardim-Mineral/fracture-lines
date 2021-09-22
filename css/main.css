@@ -8,11 +8,16 @@ html, body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-start;
   background-color: #fff;
   width: 100%;
   z-index: 100;
   box-sizing: border-box;
-  padding: 0 10%;
+  padding: 10px;
+}
+
+.param-flip {
+  transform: rotate(180deg);
 }
 
 .canvas-container {
@@ -25,4 +30,9 @@ html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.param-container {
+  display: flex;
+  flex-direction: column;
 }

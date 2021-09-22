@@ -10,6 +10,12 @@ function preload() {
   EL.container = document.getElementById('my-canvas-container');
   EL.menu = document.getElementById('my-menu-container');
   EL.buttonPlay = document.getElementById('my-button-play');
+  EL.param = {};
+  EL.param.space = document.getElementById('param-line-space');
+  EL.param.amp = document.getElementById('param-line-amp');
+  EL.param.xScale = document.getElementById('param-x-scale');
+  EL.param.yScale = document.getElementById('param-y-scale');
+  EL.param.tScale = document.getElementById('param-t-scale');
 
   EL.buttonPlay.addEventListener('click', () => {
     const cVal = EL.buttonPlay.getAttribute('value');
@@ -17,12 +23,32 @@ function preload() {
     animate = !animate;
     EL.buttonPlay.setAttribute('value', nVal);
   });
+
+  Object.keys(EL.param).forEach(k => {
+    EL.param[k].addEventListener('change', updateParams);
+  });
 }
 
 function sizeCanvas() {
   const maxHeight = windowHeight - EL.menu.offsetHeight;
   resizeCanvas(MAX_WIDTH, maxHeight);
   EL.container.style.height = `${height}px`;
+}
+
+function updateSliders() {
+  EL.param.space.value = lineSpacing;
+  EL.param.amp.value = lineAmplitude;
+  EL.param.xScale.value = 1 / xScale;
+  EL.param.yScale.value = 1 / yScale;
+  EL.param.tScale.value = 1 / tScale;
+}
+
+function updateParams() {
+  lineSpacing = EL.param.space.value;
+  lineAmplitude = EL.param.amp.value;
+  xScale = 1 / EL.param.xScale.value;
+  yScale = 1 / EL.param.yScale.value;
+  tScale = 1 / EL.param.tScale.value;
 }
 
 function loadPreset0() {
@@ -35,6 +61,7 @@ function loadPreset0() {
   tScale = 0.005;
   tCount = 5000;
   loop();
+  updateSliders();
 }
 
 function loadPreset1() {
@@ -47,6 +74,7 @@ function loadPreset1() {
   tScale = 0.0005;
   tCount = 5000;
   loop();
+  updateSliders();
 }
 
 function setup() {

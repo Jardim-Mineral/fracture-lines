@@ -9,6 +9,26 @@
     <div id="my-canvas-container" class="canvas-container"></div>
     <div id="my-menu-container" class="menu-container">
       <input class="input-button" id="my-button-play" type="button" value="PAUSE">
+      <div class="param-container">
+        <label for="param-line-space" class="param-label">line space</label>
+        <input id="param-line-space" type="range" min="2" max="16" step="2">
+      </div>
+      <div class="param-container">
+        <label for="param-line-amp" class="param-label">line amplitude</label>
+        <input id="param-line-amp" type="range" min="60" max="200" step="10">
+      </div>
+      <div class="param-container">
+        <label for="param-x-scale" class="param-label">x diversity</label>
+        <input id="param-x-scale" class="param-flip" type="range" min="50" max="300" step="10">
+      </div>
+      <div class="param-container">
+        <label for="param-y-scale" class="param-label">y diversity</label>
+        <input id="param-y-scale" class="param-flip" type="range" min="1000" max="10000" step="1000">
+      </div>
+      <div class="param-container">
+        <label for="param-t-scale" class="param-label">t diversity</label>
+        <input id="param-t-scale" class="param-flip" type="range" min="100" max="10100" step="1000">
+      </div>
     </div>
   </body>
 </html>
