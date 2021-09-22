@@ -32,8 +32,20 @@ function loadPreset0() {
   lineSamples = 4;
   xScale = 0.01;
   yScale = 0.001;
-  tScale = 0.01;
-  tCount = 0;
+  tScale = 0.005;
+  tCount = 5000;
+  loop();
+}
+
+function loadPreset1() {
+  numLines = 100;
+  lineSpacing = 8;
+  lineAmplitude = 100;
+  lineSamples = 4;
+  xScale = 0.005;
+  yScale = 0.0001;
+  tScale = 0.0005;
+  tCount = 5000;
   loop();
 }
 
@@ -48,7 +60,7 @@ function setup() {
   smooth();
   noLoop();
   noiseSeed(122);
-  loadPreset0();
+  loadPreset1();
 }
 
 function windowResized() {
@@ -60,6 +72,9 @@ function drawLines() {
   for (l = 0; l < numLines; l++) {
     const lineHeight = height / numLines;
     const y0 = l * lineHeight * lineSpacing;
+
+    if (y0 - lineAmplitude * lineHeight > height) break;
+
     let py = y0 - lineAmplitude * lineHeight * noise(xScale * -1,
                                                      yScale * y0,
                                                      tScale * tCount);
